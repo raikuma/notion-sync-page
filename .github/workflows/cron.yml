@@ -19,11 +19,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Generate txt file
-        run: date > $GITHUB_WORKSPACE/time.txt
-      
-      - name: Add and commit
+      - run: date > $GITHUB_WORKSPACE/time.txt
       - uses: EndBug/add-and-commit@v9
         with:
           message: 'Update time.txt'
