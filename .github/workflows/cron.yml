@@ -14,20 +14,17 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:  
   # My custom job
-  refresh-time-and-commit:
+  refresh:
     runs-on: ubuntu-latest
     
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: './repo'
       
       - name: Generate txt file
-      - run: date > ./repo/time.txt
+        run: date > $GITHUB_WORKSPACE/time.txt
       
       - name: Add and commit
       - uses: EndBug/add-and-commit@v9
         with:
           message: 'Update time.txt'
           add: '*.txt --force'
-          cwd: './repo'
